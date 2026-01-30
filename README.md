@@ -4,7 +4,7 @@
 This project demonstrates core Next.js concepts such as routing, data fetching strategies (CSR, SSR, SSG), and component-based UI development as part of Module 4.
 
 ### Live Demo
-**Github Pages** URL
+**Vercel** [click here](https://milestone-3-rahmat-bagus-santoso.vercel.app/)
 
 ## Features
 - Product Listing page (Home)
@@ -54,7 +54,9 @@ app/
 - **Development Assistance:** ChatGPT
 
 ## Screenshots
-(ss here)
+![products page](./public/assets/productspage.png)
+![product detail](./public/assets/productdetail.png)
+![ssg page](./public/assets/ssg.png)
 
 ## Getting Started
 ```

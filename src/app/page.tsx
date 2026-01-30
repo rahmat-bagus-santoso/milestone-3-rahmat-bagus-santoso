@@ -21,14 +21,21 @@ export default function Home() {
     fetchProducts();
   }, []);
 
-  if(loading) return <p>Loading...</p>
+  if(loading) {
+    return (
+      <div className="flex min-h-[60vh] items-center justify-center">
+        <div className="h-6 w-6 animate-spin rounded-full border border-zinc-300 border-t-zinc-900">
+        </div>
+      </div>
+    );
+  }
 
   if(products.length === 0) return <p>No products found</p>
   return (
     <>
       <Header />
       <main className="m-auto max-w-6xl px-4 pb-24">
-        <h1 className="text-2xl font-semibold mb-4">All Products</h1>
+        <h1 className="text-2xl font-semibold mt-4">All Products</h1>
         <ProductGrid products={products} />
       </main>
       <Footer />
