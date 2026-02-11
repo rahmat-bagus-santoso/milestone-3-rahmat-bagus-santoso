@@ -1,11 +1,11 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { Product } from "./types/product";
-import { getAllProducts } from "./lib/api";
-import ProductGrid from "./components/ProductGrid";
-import Header from "./components/Header";
-import Footer from "./components/Footer";
+import { Product } from "../types/product";
+import { getAllProducts } from "../lib/api";
+import ProductGrid from "../components/ProductGrid";
+import Header from "../components/Header";
+import Footer from "../components/Footer";
 
 
 export default function Home() {
