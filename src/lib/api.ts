@@ -1,11 +1,11 @@
 import { Product } from "../types/product";
 
-export const API_URL = "https://api.escuelajs.co/api/v1/products";
+export const API_URL = "https://api.escuelajs.co/api/v1";
 
 // get all products
 export const getAllProducts = async (): Promise<Product[]> => {
     try {
-        const response = await fetch(API_URL);
+        const response = await fetch(`${API_URL}/products`);
 
         if (!response.ok) return [];
         
@@ -21,7 +21,7 @@ export const getAllProducts = async (): Promise<Product[]> => {
 // get product by id
 export const getProductById = async (id: string): Promise<Product | null> => {
     try {
-        const response = await fetch(`${API_URL}/${id}`, {
+        const response = await fetch(`${API_URL}/products/${id}`, {
             cache: "no-store",
         });
 
