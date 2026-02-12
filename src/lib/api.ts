@@ -1,6 +1,7 @@
 import { Product } from "../types/product";
 
 export const API_URL = "https://api.escuelajs.co/api/v1";
+export const revalidate = 60;
 
 // get all products
 export const getAllProducts = async (): Promise<Product[]> => {
