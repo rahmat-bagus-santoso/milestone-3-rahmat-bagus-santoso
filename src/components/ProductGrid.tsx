@@ -14,6 +14,7 @@ const ProductGrid = ({ products }: ProductGridProps) => {
           <ProductCard product={product} />
         </Link>
       ))}
+      
     </div>
   )
 }
