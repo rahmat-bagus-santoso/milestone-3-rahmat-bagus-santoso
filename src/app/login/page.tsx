@@ -35,6 +35,11 @@ export default function LoginPage() {
           <h1 className="font-serif italic text-4xl mb-2">Welcome Back</h1>
           <p className="text-[10px] uppercase tracking-widest text-zinc-400">Enter your credentials to access your account</p>
         </div>
+        <div className="text-xs text-zinc-400 mb-6">
+          <p>admin: admin@mail.com / admin123</p>
+          <p>customer: john@mail.com / changeme</p>
+          
+        </div>
         
         <form className="space-y-6" onSubmit={handleSubmit}>
           <div>
