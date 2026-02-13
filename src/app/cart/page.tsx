@@ -11,27 +11,32 @@ export default function CartPage() {
     
     if (items.length === 0) {
         return (
-            <div className="max-w-xl mx-auto mt-20">
+            <div className="max-w-xl mx-auto mt-20 p-8 bg-white rounded shadow text-center">
                 <h1 className="text-2xl font-semibold mb-4">Cart</h1>
-                <p className="text-center">Your cart is empty</p>
+                <div className="text-zinc-400 mb-4">Your cart is empty.<br/><span className="text-xs">Add some products to continue.</span></div>
             </div>
         );
     }
 
     return (
-        <div className="max-w-xl mx-auto mt-20">
+        <div className="max-w-xl mx-auto mt-20 p-8 bg-white rounded shadow">
             <h1 className="text-2xl font-semibold mb-4">Cart</h1>
             <ul className="mb-4 space-y-2">
                 {items.map((item) => (
-                    <li key = {item.id}>
-                        <span>{item.title}</span>
-                        <span>${item.quantity}</span>
-                        <button onClick={() => removeItem(item.id)}>Remove</button>
+                    <li key = {item.id} className='flex justify-between items-center py-2'>
+                        <div>
+                        <span className='font-medium'>{item.title}</span>
+                        <span className='ml-2 text-zinc-500'>x{item.quantity}</span>
+                        </div>
+                        <button onClick={() => removeItem(item.id)} className='text-xs text-red-500 hover:underline ml-4'>Remove</button>
                     </li>
                 ))}   
             </ul>
-            <p className="font-semibold">Total: ${total.toFixed(2)}</p>
-            <Link href="/checkout" className="bg-black text-white px-4 py-2">
+            <div className="flex justify-between items-center mb-6">
+                <span className="font-semibold">Total:</span>
+                <span className="text-lg font-bold">${total.toFixed(2)}</span>
+            </div>
+            <Link href="/checkout" className="w-full block bg-zinc-900 text-white py-3 rounded font-bold uppercase tracking-widest text-center hover:bg-zinc-700 transition-all">
                 Checkout</Link>
         </div>
     );
