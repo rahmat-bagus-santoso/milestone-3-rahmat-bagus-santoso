@@ -22,10 +22,16 @@ export const useCartStore = create<CartState>()(
       items: [],
       addItem: (newItem) => {
         const items = get().items;
-        const existing = items.find((existingItem) => existingItem.id === newItem.id);
+        const existing = items.find(
+          (existingItem) => existingItem.id === newItem.id,
+        );
         if (existing) {
           set({
-            items: items.map((existingItem) => existingItem.id === newItem.id ? { ...existingItem, quantity: existingItem.quantity + 1 } : existingItem),
+            items: items.map((existingItem) =>
+              existingItem.id === newItem.id
+                ? { ...existingItem, quantity: existingItem.quantity + 1 }
+                : existingItem,
+            ),
           });
         } else {
           set({
@@ -40,7 +46,11 @@ export const useCartStore = create<CartState>()(
 
       clearCart: () => set({ items: [] }),
 
-      getTotalPrice: () => get().items.reduce((total, item) => total + item.price * item.quantity, 0),
+      getTotalPrice: () =>
+        get().items.reduce(
+          (total, item) => total + item.price * item.quantity,
+          0,
+        ),
     }),
     {
       name: "cart-storage",

@@ -12,7 +12,7 @@ export default function CheckoutPage() {
   function handleCheckout() {
     setSuccess(true);
     setTimeout(() => {
-    clearCart();    
+      clearCart();
     }, 1000);
   }
 
@@ -25,7 +25,8 @@ export default function CheckoutPage() {
       <div className="max-w-xl mx-auto mt-20 p-8 bg-white rounded shadow text-center">
         <h1 className="text-2xl font-semibold mb-4">Checkout</h1>
         <div className="text-zinc-400 mb-4">
-          Your cart is empty. <br /> <span className="text-xs">Add some products to continue.</span>
+          Your cart is empty. <br />{" "}
+          <span className="text-xs">Add some products to continue.</span>
         </div>
       </div>
     );
@@ -34,7 +35,11 @@ export default function CheckoutPage() {
   return (
     <div className="max-w-xl mx-auto mt-20 p-8 bg-white rounded shadow">
       <h1 className="text-2xl font-semibold mb-4">Checkout</h1>
-      {success && <div className="mb-4 p-3 bg-emerald-100 text-emerald-700 rounded">Checkout Success! Thank you for your purchase.</div>}
+      {success && (
+        <div className="mb-4 p-3 bg-emerald-100 text-emerald-700 rounded">
+          Checkout Success! Thank you for your purchase.
+        </div>
+      )}
       <ul className="mb-4 divide-y divide-zinc-100">
         {items.map((item) => (
           <li key={item.id} className="flex justify-between py-2">
