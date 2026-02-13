@@ -1,7 +1,6 @@
 import { getProductById } from "@/lib/api";
 import Link from "next/link";
 
-
 type ProductDetailProps = {
   params: Promise<{
     id: string;
@@ -18,13 +17,12 @@ const page = async ({ params }: ProductDetailProps) => {
 
   return (
     <>
-    
-    <main className="px-4 py-12">
-      <div className="relative mx-auto max-w-4xl">
-        <Link
-          href="/"
-          aria-label="Close and return to products"
-          className="
+      <main className="px-4 py-12">
+        <div className="relative mx-auto max-w-4xl">
+          <Link
+            href="/"
+            aria-label="Close and return to products"
+            className="
             absolute
             right-2
             top-2
@@ -36,13 +34,13 @@ const page = async ({ params }: ProductDetailProps) => {
             transition
             hover:text-zinc-900
           "
-        >
-          X
-        </Link>
+          >
+            X
+          </Link>
 
-        <div className="flex flex-col md:flex-row border border-zinc-200 bg-white">
-          <div
-            className="
+          <div className="flex flex-col md:flex-row border border-zinc-200 bg-white">
+            <div
+              className="
               w-full
               md:w-20
               bg-zinc-900
@@ -53,9 +51,9 @@ const page = async ({ params }: ProductDetailProps) => {
               p-6
               text-white
             "
-          >
-            <span
-              className="
+            >
+              <span
+                className="
                 text-[10px]
                 font-black
                 uppercase
@@ -63,13 +61,13 @@ const page = async ({ params }: ProductDetailProps) => {
                 md:[writing-mode:vertical-lr]
                 md:rotate-180
               "
-            >
-              {product.category.name}
-            </span>
-          </div>
+              >
+                {product.category.name}
+              </span>
+            </div>
 
-          <div
-            className="
+            <div
+              className="
               flex-1
               p-12
               flex
@@ -77,11 +75,11 @@ const page = async ({ params }: ProductDetailProps) => {
               justify-center
               bg-[#fdfdfd]
             "
-          >
-            <img
-              src={product.images[0]}
-              alt={product.title}
-              className="
+            >
+              <img
+                src={product.images[0]}
+                alt={product.title}
+                className="
                 w-64
                 md:w-72
                 lg:w-80
@@ -90,11 +88,11 @@ const page = async ({ params }: ProductDetailProps) => {
                 duration-1000
                 hover:scale-110
               "
-            />
-          </div>
+              />
+            </div>
 
-          <div
-            className="
+            <div
+              className="
               w-full
               md:w-80
               p-12
@@ -104,25 +102,27 @@ const page = async ({ params }: ProductDetailProps) => {
               border-zinc-100
               space-y-8
             "
-          >
-            <h1
-              className="
+            >
+              <h1
+                className="
                 text-3xl
                 font-light
                 tracking-tighter
                 leading-tight
               "
-            >
-              {product.title}
-            </h1>
+              >
+                {product.title}
+              </h1>
 
-            <p className="text-xs text-zinc-400 leading-relaxed">{product.description}</p>
+              <p className="text-xs text-zinc-400 leading-relaxed">
+                {product.description}
+              </p>
 
-            <div className="pt-8 flex flex-col gap-4">
-              <span className="text-2xl font-light">${product.price}</span>
+              <div className="pt-8 flex flex-col gap-4">
+                <span className="text-2xl font-light">${product.price}</span>
 
-              <button
-                className="
+                <button
+                  className="
                   w-full
                   py-3
                   bg-zinc-900
@@ -134,15 +134,14 @@ const page = async ({ params }: ProductDetailProps) => {
                   transition
                   hover:bg-zinc-800
                 "
-              >
-                Add to Cart
-              </button>
+                >
+                  Add to Cart
+                </button>
+              </div>
             </div>
           </div>
         </div>
-      </div>
-    </main>
-    
+      </main>
     </>
   );
 };

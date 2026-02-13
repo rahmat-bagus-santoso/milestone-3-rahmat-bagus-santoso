@@ -22,10 +22,12 @@ const Header = () => {
     mounted.current = true;
     async function fetchSession() {
       const session = await getSession();
-      if (mounted.current && session) setAuth(session, '');
+      if (mounted.current && session) setAuth(session, "");
     }
     fetchSession();
-    return () => { mounted.current = false; };
+    return () => {
+      mounted.current = false;
+    };
   }, [setAuth]);
 
   useEffect(() => {
@@ -53,15 +55,32 @@ const Header = () => {
           <Link href="/about" className="hover:text-zinc-900 transition">
             About
           </Link>
-          <Link href="/cart" className="relative hover:text-zinc-900 transition">
+          <Link
+            href="/cart"
+            className="relative hover:text-zinc-900 transition"
+          >
             <span className="inline-block align-middle mr-1">
-              <svg width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="currentColor" className="inline">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13l-1.35 2.7A1 1 0 0 0 7 17h12a1 1 0 0 0 .95-.68l1.54-4.32M7 13V6m0 0L5.4 5M7 6h10" />
+              <svg
+                width="20"
+                height="20"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+                className="inline"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13l-1.35 2.7A1 1 0 0 0 7 17h12a1 1 0 0 0 .95-.68l1.54-4.32M7 13V6m0 0L5.4 5M7 6h10"
+                />
               </svg>
             </span>
             Cart
             {cartCount > 0 && (
-              <span className="absolute -top-2 -right-2 bg-emerald-500 text-white rounded-full px-2 py-0.5 text-[10px] font-bold">{cartCount}</span>
+              <span className="absolute -top-2 -right-2 bg-emerald-500 text-white rounded-full px-2 py-0.5 text-[10px] font-bold">
+                {cartCount}
+              </span>
             )}
           </Link>
           {user ? (

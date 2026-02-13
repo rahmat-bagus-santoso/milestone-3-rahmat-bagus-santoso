@@ -1,5 +1,6 @@
 "use client";
 import Link from "next/link";
+import Image from "next/image";
 import { Product } from "../types/product";
 import { useCartStore } from "@/store/cart-store";
 
@@ -21,19 +22,27 @@ const ProductCard = ({ product }: ProductCardProps) => {
       <Link href={`/product/${product.id}`} className="group block">
         <section>
           <div className="relative cursor-pointer shadow-md">
-            <div className="overflow-hidden bg-stone-100 aspect-[3/4]">
-              <img
+            <div className="overflow-hidden bg-stone-100 aspect-[3/4] relative">
+              <Image
                 src={product.images[0]}
                 alt={product.title}
+                fill
+                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                 className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700 scale-100 group-hover:scale-110"
               />
             </div>
             <div className="mt-4 space-y-1 p-5">
               <div className="flex justify-between items-baseline gap-2">
-                <h3 className="text-2xl font-serif tracking-tighter uppercase italic leading-none truncate">{product.title}</h3>
-                <span className="text-md font-light tabular-nums text-stone-700">${product.price}</span>
+                <h3 className="text-2xl font-serif tracking-tighter uppercase italic leading-none truncate">
+                  {product.title}
+                </h3>
+                <span className="text-md font-light tabular-nums text-stone-700">
+                  ${product.price}
+                </span>
               </div>
-              <p className="text-[10px] uppercase tracking-[0.3em] text-stone-500 font-semibold border-b border-stone-200 pb-2">{product.category.name}</p>
+              <p className="text-[10px] uppercase tracking-[0.3em] text-stone-500 font-semibold border-b border-stone-200 pb-2">
+                {product.category.name}
+              </p>
             </div>
           </div>
         </section>

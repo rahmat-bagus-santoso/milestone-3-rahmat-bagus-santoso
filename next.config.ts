@@ -26,6 +26,10 @@ const nextConfig: NextConfig = {
         protocol: 'https',
         hostname: 'api.escuelajs.com',
       },
+      {
+        protocol: 'https',
+        hostname: '**',
+      },
     ],
   },
 };
