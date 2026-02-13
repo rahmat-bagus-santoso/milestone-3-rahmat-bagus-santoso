@@ -1,11 +1,11 @@
 "use client";
 
-import { useState } from "react";
+import { useState, Suspense } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 import { login } from "@/lib/auth";
 import { useAuthStore } from "@/store/auth-store";
 
-export default function LoginPage() {
+function LoginForm() {
     const router = useRouter();
     const searchParams = useSearchParams();
     const callbackUrl = searchParams.get("callbackUrl") || "/";
@@ -13,7 +13,7 @@ export default function LoginPage() {
     const [password, setPassword] = useState("");
     const [error, setError] = useState<string | null>(null);
     const [loading, setLoading] = useState(false);
-    const setUser = useAuthStore((state) => state.setAuth);
+    const setAuth = useAuthStore((state) => state.setAuth);
 
     async function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
         event.preventDefault();
@@ -22,7 +22,7 @@ export default function LoginPage() {
         
         try {
             const result = await login(email,password)
-            setUser(result.user, result.token);
+            setAuth(result.user, result.token);
             router.push(callbackUrl);
         } catch (error) {
                 setError("Email or password is incorrect");
@@ -75,4 +75,15 @@ export default function LoginPage() {
       </div>
     </div>
     );
+}
+
+export default function LoginPage() {
+  return (
+    <Suspense fallback={
+    <div className="min-h-screen flex items-center justify-center bg-[#fafaf9]">
+      <p className="text-[10px] uppercase tracking-[0.3em] text-zinc-400">Loading Session...</p>
+    </div>}>
+      <LoginForm />
+    </Suspense>
+  );
 }
