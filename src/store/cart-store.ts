@@ -20,16 +20,16 @@ export const useCartStore = create<CartState>()(
   persist(
     (set, get) => ({
       items: [],
-      addItem: (item) => {
+      addItem: (newItem) => {
         const items = get().items;
-        const existing = items.find((item) => item.id === item.id);
+        const existing = items.find((existingItem) => existingItem.id === newItem.id);
         if (existing) {
           set({
-            items: items.map((item) => (item.id === item.id ? { ...item, quantity: item.quantity + 1 } : item)),
+            items: items.map((existingItem) => existingItem.id === newItem.id ? { ...existingItem, quantity: existingItem.quantity + 1 } : existingItem),
           });
         } else {
           set({
-            items: [...items, { ...item, quantity: 1 }],
+            items: [...items, { ...newItem, quantity: 1 }],
           });
         }
       },
