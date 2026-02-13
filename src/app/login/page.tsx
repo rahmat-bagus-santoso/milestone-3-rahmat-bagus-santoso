@@ -3,15 +3,17 @@
 import { useState } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 import { login } from "@/lib/auth";
+import { useAuthStore } from "@/store/auth-store";
 
 export default function LoginPage() {
     const router = useRouter();
     const searchParams = useSearchParams();
-    const callbackUrl = searchParams.get("callback") || "/";
+    const callbackUrl = searchParams.get("callbackUrl") || "/";
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [error, setError] = useState<string | null>(null);
     const [loading, setLoading] = useState(false);
+    const setUser = useAuthStore((state) => state.setAuth);
 
     async function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
         event.preventDefault();
@@ -19,7 +21,8 @@ export default function LoginPage() {
         setLoading(true);
         
         try {
-            await login(email,password)
+            const result = await login(email,password)
+            setUser(result.user, result.token);
             router.push(callbackUrl);
         } catch (error) {
                 setError("Email or password is incorrect");

@@ -1,6 +1,4 @@
 import { getProductById } from "@/lib/api";
-import Header from "@/components/Header";
-import Footer from "@/components/Footer";
 import Link from "next/link";
 
 
@@ -20,7 +18,7 @@ const page = async ({ params }: ProductDetailProps) => {
 
   return (
     <>
-    <Header />
+    
     <main className="px-4 py-12">
       <div className="relative mx-auto max-w-4xl">
         <Link
@@ -144,7 +142,7 @@ const page = async ({ params }: ProductDetailProps) => {
         </div>
       </div>
     </main>
-    <Footer />
+    
     </>
   );
 };

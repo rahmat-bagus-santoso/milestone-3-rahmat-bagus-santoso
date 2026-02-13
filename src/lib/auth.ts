@@ -44,10 +44,12 @@ export async function login(
         sameSite: "lax",
         path: "/",
     });
+
+    return { user, token: access_token};
 }
 
 export async function logout() {
-    const cookieStore =await cookies();
+    const cookieStore = await cookies();
     cookieStore.delete(AUTH_COOKIE)
 }
 
