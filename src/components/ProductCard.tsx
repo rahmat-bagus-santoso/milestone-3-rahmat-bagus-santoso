@@ -22,7 +22,7 @@ const ProductCard = ({ product }: ProductCardProps) => {
       <Link href={`/product/${product.id}`} className="group block">
         <section>
           <div className="relative cursor-pointer shadow-md">
-            <div className="overflow-hidden bg-stone-100 aspect-[3/4] relative">
+            <div className="overflow-hidden bg-stone-100 aspect-3/4 relative">
               <Image
                 src={product.images[0]}
                 alt={product.title}
