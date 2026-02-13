@@ -2,7 +2,7 @@ import { NextResponse } from "next/server";
 import { API_URL } from "@/lib/api";
 
 export async function GET() {
-    const response = await fetch(`${API_URL}/products`)
+    const response = await fetch(`${API_URL}/products?offset=0&limit=20`)
     const data = await response.json()
     return NextResponse.json(data)
     
