@@ -6,7 +6,7 @@ export const revalidate = 60;
 // get all products
 export const getAllProducts = async (): Promise<Product[]> => {
     try {
-        const response = await fetch(`${API_URL}/products`);
+        const response = await fetch(`${API_URL}/products?offset=0&limit=20`);
 
         if (!response.ok) return [];
         
